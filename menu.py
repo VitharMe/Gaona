@@ -7,7 +7,7 @@ import RPi.GPIO as GPIO
 from pygame.locals import *
 os.putenv('SDL_FBDEV', '/dev/fb1')
 
-button_map = {23, 24}
+button_map = {23:(255,0,0), 24:(0,255,0)}
 
 GPIO.setmode(GPIO.BCM)
 for k in button_map.keys():
