@@ -11,11 +11,28 @@ def main():
 
     WHITE=(255,255,255)
     BLUE=(0,0,255)
-
+    RED=(255,0,0)
+    GREY=(220,220,220)
+    HGREY=(105,105,105)
     DISPLAY.fill(WHITE)
 
-    pygame.draw.rect(DISPLAY,BLUE,(20,20,150,200,))
-    pygame.draw.rect(DISPLAY, (0, 100, 255), (50, 50, 162, 100), 3)
+    font = pygame.font.SysFont('Arial', 35)
+    # First
+    pygame.draw.rect(DISPLAY,HGREY,(25,15,200,50))
+    pygame.draw.rect(DISPLAY,GREY,(20,10,200,50))
+    DISPLAY.blit(font.render('Gaona\'s Bell', True, RED), (25, 15))
+    # Second
+    pygame.draw.rect(DISPLAY,HGREY,(25,75,200,50))
+    pygame.draw.rect(DISPLAY,GREY,(20,70,200,50))
+    DISPLAY.blit(font.render('Second', True, RED), (25, 75))
+    # Third
+    pygame.draw.rect(DISPLAY,HGREY,(25,135,200,50))
+    pygame.draw.rect(DISPLAY,GREY,(20,130,200,50))
+    DISPLAY.blit(font.render('Third', True, RED), (25, 135))
+
+    # Select
+    pygame.draw.rect(DISPLAY, RED, (20, 10, 200, 50), 3)
+
     while True:
         for event in pygame.event.get():
             if event.type==QUIT:
