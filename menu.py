@@ -7,11 +7,9 @@ import RPi.GPIO as GPIO
 from pygame.locals import *
 os.putenv('SDL_FBDEV', '/dev/fb1')
 
-button_map = {23:(255,0,0), 24:(0,255,0)}
-
 GPIO.setmode(GPIO.BCM)
-for k in button_map.keys():
-    GPIO.setup(k, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 def main():
     pygame.init()
@@ -40,20 +38,14 @@ def main():
     DISPLAY.blit(font.render('Third', True, RED), (25, 135))
 
     # Select
-    pygame.draw.rect(DISPLAY, RED, (20, 10, 200, 50), 3)
+    #pygame.draw.rect(DISPLAY, RED, (20, 10, 200, 50), 3)
 
     while True:
-        for (k) in button_map.items():
-            if GPIO.input(k) == False:
-                DISPLAY.fill(v)
-                if k == 23:
-                    text_surface = font_big.render('Up', True, WHITE)
-                else:
-                    text_surface = font_big.render('Down', True, WHITE)
-                rect = text_surface.get_rect(center=(120,120))
-                DISPLAY.blit(text_surface, rect)
-                pygame.display.update()
-        sleep(0.1)
+        UP = GPIO.input(23)
+        DOWN = GPIO.input(24)
+        if UP == False:
+            pygame.draw.rect(DISPLAY, RED, (20, 10, 200, 50), 3)
+        if DOWN == False:
         for event in pygame.event.get():
             if event.type==QUIT:
                 pygame.quit()
