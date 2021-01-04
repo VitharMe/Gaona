@@ -41,8 +41,20 @@ def main():
     while True:
         for (k,v) in button_map.items():
             if GPIO.input(k) == False:
+                # First
+                pygame.draw.rect(DISPLAY,HGREY,(25,15,200,50))
+                pygame.draw.rect(DISPLAY,GREY,(20,10,200,50))
+                DISPLAY.blit(font.render('Gaona\'s Bell', True, RED), (25, 15))
+                # Second
+                pygame.draw.rect(DISPLAY,HGREY,(25,75,200,50))
+                pygame.draw.rect(DISPLAY,GREY,(20,70,200,50))
+                DISPLAY.blit(font.render('Second', True, RED), (25, 75))
+                # Third
+                pygame.draw.rect(DISPLAY,HGREY,(25,135,200,50))
+                pygame.draw.rect(DISPLAY,GREY,(20,130,200,50))
+                DISPLAY.blit(font.render('Third', True, RED), (25, 135))               
                 select.move_ip(v)
-        pygame.draw.rect(DISPLAY, RED, select, 3)
+                pygame.draw.rect(DISPLAY, RED, select, 3)
         pygame.display.update()
         sleep(1)
 main()
