@@ -53,9 +53,12 @@ def main():
     while True:
         for (k,v) in button_map.items():
             if GPIO.input(k) == False:
-                draws()
-                motion(v)
-                names()
+                if GPIO.input(23) == GPIO.HIGH:
+                    draws()
+                    motion(v)
+                    names()
+                if GPIO.input(24) == GPIO.HIGH:
+                    print("24")
         pygame.display.update()
         sleep(0.2)
 main()
