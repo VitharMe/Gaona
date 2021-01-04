@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-if __name__ == '__main__':
+def graph():
     import os
     import pygame
     from time import sleep
@@ -45,3 +45,6 @@ if __name__ == '__main__':
         lcd.blit(pygame.transform.scale(img, (240,240)), (0,0))
         pygame.display.update()
         sleep(0.1)
+
+if __name__ == '__main__':
+    graph()
