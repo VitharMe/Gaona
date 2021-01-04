@@ -63,10 +63,18 @@ def main():
                     motion(v)
 		    foo()
                     names()
+                    if foo.counter >= 3:
+			select = Rect(20, 10, 200, 50)
+			foo.counter = 0
+                        draws()
+			selection()
+			names()
                 if GPIO.input(24) == GPIO.LOW:
 		    if foo.counter == 0:
-			#gaona()
-			print("test")
+			img = pygame.image.load('bell.png')
+			DISPLAY.blit(img, (0,0))
+			pygame.display.update()
+			gaona.graph()
 		    if foo.counter == 1:
                         print("2")
 		    if foo.counter == 2:
