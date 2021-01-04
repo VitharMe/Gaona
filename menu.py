@@ -30,6 +30,9 @@ def main():
     def selection():
         select = Rect(20, 10, 200, 50)
         pygame.draw.rect(DISPLAY, SGREY, select)
+    def motion():
+        select.move_ip(v)
+        pygame.draw.rect(DISPLAY, SGREY, select)        
     pygame.init()
     pygame.mouse.set_visible(False)
     DISPLAY=pygame.display.set_mode((240,240),0,0)
@@ -50,8 +53,7 @@ def main():
         for (k,v) in button_map.items():
             if GPIO.input(k) == False:
                 draws()
-                select.move_ip(v)
-                pygame.draw.rect(DISPLAY, SGREY, select)
+                motion(v)
                 names()
         pygame.display.update()
         sleep(0.2)
