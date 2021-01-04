@@ -28,6 +28,7 @@ def main():
     pygame.draw.rect(DISPLAY,HGREY,(25,15,200,50))
     pygame.draw.rect(DISPLAY,GREY,(20,10,200,50))
     DISPLAY.blit(font.render('Gaona\'s Bell', True, RED), (25, 15))
+    FIRST='20,10'
     # Second
     pygame.draw.rect(DISPLAY,HGREY,(25,75,200,50))
     pygame.draw.rect(DISPLAY,GREY,(20,70,200,50))
@@ -37,15 +38,12 @@ def main():
     pygame.draw.rect(DISPLAY,GREY,(20,130,200,50))
     DISPLAY.blit(font.render('Third', True, RED), (25, 135))
 
-    # Select
-    #pygame.draw.rect(DISPLAY, RED, (20, 10, 200, 50), 3)
-
     while True:
         UP = GPIO.input(23)
         DOWN = GPIO.input(24)
         if UP == False:
-            pygame.draw.rect(DISPLAY, RED, (20, 10, 200, 50), 3)
-        if DOWN == False:
+            pygame.draw.rect(DISPLAY, RED, (FIRST, 200, 50), 3)
+        #if DOWN == False:
         for event in pygame.event.get():
             if event.type==QUIT:
                 pygame.quit()
