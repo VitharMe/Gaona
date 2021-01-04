@@ -1,12 +1,12 @@
 #!/usr/bin/env python
+import os
+import pygame
+import sys
+from time import sleep
+import RPi.GPIO as GPIO
+from pygame.locals import *
+import gaona
 def deploy():
-    import os
-    import pygame
-    import sys
-    from time import sleep
-    import RPi.GPIO as GPIO
-    from pygame.locals import *
-    import gaona
     os.putenv('SDL_FBDEV', '/dev/fb1')
 
     button_map = {23:(0,85), 24:(100,0)}
