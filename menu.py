@@ -26,7 +26,10 @@ def main():
         pygame.draw.rect(DISPLAY,GREY,(20,95,200,50))
         # Third
         pygame.draw.rect(DISPLAY,HGREY,(25,185,200,50))
-        pygame.draw.rect(DISPLAY,GREY,(20,180,200,50))        
+        pygame.draw.rect(DISPLAY,GREY,(20,180,200,50))
+    def select():
+        select = Rect(20, 10, 200, 50)
+        pygame.draw.rect(DISPLAY, SGREY, select)
     pygame.init()
     pygame.mouse.set_visible(False)
     DISPLAY=pygame.display.set_mode((240,240),0,0)
@@ -41,9 +44,7 @@ def main():
     DISPLAY.fill(BLACK)
     font = pygame.font.SysFont('Arial', 35)
     draws()
-    # Select
-    select = Rect(20, 10, 200, 50)
-    pygame.draw.rect(DISPLAY, SGREY, select)
+    select()
     names()
     while True:
         for (k,v) in button_map.items():
