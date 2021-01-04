@@ -1,12 +1,11 @@
 #!/usr/bin/env python
+import os
+import pygame
+from time import sleep
+import matplotlib
+import RPi.GPIO as GPIO
+import menu
 def graph():
-    import os
-    import pygame
-    from time import sleep
-    import matplotlib
-    import RPi.GPIO as GPIO
-    import menu
-
     button_map = {23:(0,85), 24:(100,0)}
     GPIO.setmode(GPIO.BCM)
     for k in button_map.keys():
