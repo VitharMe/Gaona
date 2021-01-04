@@ -30,6 +30,8 @@ def main():
     def selection():
         pygame.draw.rect(DISPLAY, SGREY, select)
     def motion(v):
+        i = i + 1
+        return i
         select.move_ip(v)
         pygame.draw.rect(DISPLAY, SGREY, select)
     pygame.init()
