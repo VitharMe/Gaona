@@ -7,55 +7,61 @@ import RPi.GPIO as GPIO
 from pygame.locals import *
 os.putenv('SDL_FBDEV', '/dev/fb1')
 
-button_map = {23:(0,60), 24:(100,0)}
+button_map = {23:(0,85), 24:(100,0)}
 GPIO.setmode(GPIO.BCM)
 for k in button_map.keys():
     GPIO.setup(k, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 def main():
+    def names():
+        DISPLAY.blit(font.render('Gaona\'s Bell', True, RED), (25, 15))
+        DISPLAY.blit(font.render('Second', True, RED), (25, 100))
+        DISPLAY.blit(font.render('Exit', True, RED), (25, 185))
     pygame.init()
     pygame.mouse.set_visible(False)
     DISPLAY=pygame.display.set_mode((240,240),0,0)
 
     WHITE=(255,255,255)
+    BLACK=(0,0,0)
     BLUE=(0,0,255)
     RED=(255,0,0)
     GREY=(220,220,220)
+    SGREY=(169,169,169)
     HGREY=(105,105,105)
-    DISPLAY.fill(WHITE)
+    DISPLAY.fill(BLACK)
     font = pygame.font.SysFont('Arial', 35)
     # First
     pygame.draw.rect(DISPLAY,HGREY,(25,15,200,50))
     pygame.draw.rect(DISPLAY,GREY,(20,10,200,50))
-    DISPLAY.blit(font.render('Gaona\'s Bell', True, RED), (25, 15))
-    # Second
-    pygame.draw.rect(DISPLAY,HGREY,(25,75,200,50))
-    pygame.draw.rect(DISPLAY,GREY,(20,70,200,50))
-    DISPLAY.blit(font.render('Second', True, RED), (25, 75))
-    # Third
-    pygame.draw.rect(DISPLAY,HGREY,(25,135,200,50))
-    pygame.draw.rect(DISPLAY,GREY,(20,130,200,50))
-    DISPLAY.blit(font.render('Third', True, RED), (25, 135))
     # Select
     select = Rect(20, 10, 200, 50)
+    pygame.draw.rect(DISPLAY, SGREY, select)
+    # Second
+    pygame.draw.rect(DISPLAY,HGREY,(25,100,200,50))
+    pygame.draw.rect(DISPLAY,GREY,(20,95,200,50))
+    # Third
+    pygame.draw.rect(DISPLAY,HGREY,(25,185,200,50))
+    pygame.draw.rect(DISPLAY,GREY,(20,180,200,50))
+    names()
     while True:
         for (k,v) in button_map.items():
             if GPIO.input(k) == False:
                 # First
                 pygame.draw.rect(DISPLAY,HGREY,(25,15,200,50))
                 pygame.draw.rect(DISPLAY,GREY,(20,10,200,50))
-                DISPLAY.blit(font.render('Gaona\'s Bell', True, RED), (25, 15))
                 # Second
-                pygame.draw.rect(DISPLAY,HGREY,(25,75,200,50))
-                pygame.draw.rect(DISPLAY,GREY,(20,70,200,50))
-                DISPLAY.blit(font.render('Second', True, RED), (25, 75))
+                pygame.draw.rect(DISPLAY,HGREY,(25,100,200,50))
+                pygame.draw.rect(DISPLAY,GREY,(20,95,200,50))
                 # Third
-                pygame.draw.rect(DISPLAY,HGREY,(25,135,200,50))
-                pygame.draw.rect(DISPLAY,GREY,(20,130,200,50))
-                DISPLAY.blit(font.render('Third', True, RED), (25, 135))               
+                pygame.draw.rect(DISPLAY,HGREY,(25,185,200,50))
+                pygame.draw.rect(DISPLAY,GREY,(20,180,200,50))
                 select.move_ip(v)
-                pygame.draw.rect(DISPLAY, RED, select, 3)
+                pygame.draw.rect(DISPLAY, SGREY, select)
+                #DISPLAY.blit(font.render('Exit', True, RED), (25, 185))
+                #DISPLAY.blit(font.render('Second', True, RED), (25, 100))
+                #DISPLAY.blit(font.render('Gaona\'s Bell', True, RED), (25, 15))
+                names()
         pygame.display.update()
-        sleep(1)
+        sleep(0.2)
 main()
 
