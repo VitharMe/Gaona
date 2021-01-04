@@ -28,9 +28,8 @@ def main():
         pygame.draw.rect(DISPLAY,HGREY,(25,185,200,50))
         pygame.draw.rect(DISPLAY,GREY,(20,180,200,50))
     def selection():
-        select = Rect(20, 10, 200, 50)
         pygame.draw.rect(DISPLAY, SGREY, select)
-    def motion():
+    def motion(v):
         select.move_ip(v)
         pygame.draw.rect(DISPLAY, SGREY, select)        
     pygame.init()
@@ -46,6 +45,7 @@ def main():
     HGREY=(105,105,105)
     DISPLAY.fill(BLACK)
     font = pygame.font.SysFont('Arial', 35)
+    select = Rect(20, 10, 200, 50)
     draws()
     selection()
     names()
