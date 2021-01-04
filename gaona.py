@@ -5,12 +5,13 @@ def graph():
     from time import sleep
     import matplotlib
     import RPi.GPIO as GPIO
-    
+    import menu
+
     button_map = {23:(0,85), 24:(100,0)}
     GPIO.setmode(GPIO.BCM)
     for k in button_map.keys():
         GPIO.setup(k, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-    
+
     # Execute without X
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
@@ -24,7 +25,7 @@ def graph():
     while True:
         for (k,v) in button_map.items():
             if GPIO.input(k) == False:
-                quit()            
+                menu()
             # Create some data
             x, y = [], []
             for line in open('last.txt', 'r'):
@@ -54,7 +55,7 @@ def graph():
             #lcd.blit(img, (0,0))
             lcd.blit(pygame.transform.scale(img, (240,240)), (0,0))
             pygame.display.update()
-            sleep(0.1)
+            #sleep(0.1)
 
 if __name__ == '__main__':
     graph()
