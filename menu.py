@@ -49,15 +49,7 @@ def main():
     while True:
         for (k,v) in button_map.items():
             if GPIO.input(k) == False:
-                # First
-                pygame.draw.rect(DISPLAY,HGREY,(25,15,200,50))
-                pygame.draw.rect(DISPLAY,GREY,(20,10,200,50))
-                # Second
-                pygame.draw.rect(DISPLAY,HGREY,(25,100,200,50))
-                pygame.draw.rect(DISPLAY,GREY,(20,95,200,50))
-                # Third
-                pygame.draw.rect(DISPLAY,HGREY,(25,185,200,50))
-                pygame.draw.rect(DISPLAY,GREY,(20,180,200,50))
+                draws()
                 select.move_ip(v)
                 pygame.draw.rect(DISPLAY, SGREY, select)
                 names()
