@@ -1,4 +1,5 @@
 #!/bin/bash
+rm list.txt last.txt
 T=0
 i=-1
 while true; do

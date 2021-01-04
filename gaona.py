@@ -6,6 +6,8 @@ import matplotlib
 import RPi.GPIO as GPIO
 import menu
 def graph():
+    os.system('kill -9 `pidof ran.sh`')
+    os.system('./ran.sh &`')
     button_map = {23:(0,85), 24:(100,0)}
     GPIO.setmode(GPIO.BCM)
     for k in button_map.keys():
@@ -24,6 +26,7 @@ def graph():
     while True:
         for (k,v) in button_map.items():
             if GPIO.input(k) == False:
+                os.system('kill -9 `pidof ran.sh`')
                 menu.deploy()
             # Create some data
             x, y = [], []
