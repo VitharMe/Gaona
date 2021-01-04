@@ -5,6 +5,7 @@ import sys
 from time import sleep
 import RPi.GPIO as GPIO
 from pygame.locals import *
+import gaona
 os.putenv('SDL_FBDEV', '/dev/fb1')
 
 button_map = {23:(0,85), 24:(100,0)}
@@ -30,10 +31,11 @@ def main():
     def selection():
         pygame.draw.rect(DISPLAY, SGREY, select)
     def motion(v):
-        i = i + 1
-        return i
         select.move_ip(v)
         pygame.draw.rect(DISPLAY, SGREY, select)
+    def foo():
+	foo.counter += 1
+	return foo.counter
     pygame.init()
     pygame.mouse.set_visible(False)
     DISPLAY=pygame.display.set_mode((240,240),0,0)
@@ -49,6 +51,7 @@ def main():
     DISPLAY.fill(BLACK)
     font = pygame.font.SysFont('Arial', 35)
     select = Rect(20, 10, 200, 50)
+    foo.counter = 0
     draws()
     selection()
     names()
@@ -58,9 +61,16 @@ def main():
                 if GPIO.input(23) == GPIO.LOW:
                     draws()
                     motion(v)
+		    foo()
                     names()
                 if GPIO.input(24) == GPIO.LOW:
-                    print("24")
+		    if foo.counter == 0:
+			#gaona()
+			print("test")
+		    if foo.counter == 1:
+                        print("2")
+		    if foo.counter == 2:
+                        quit()
         pygame.display.update()
         sleep(0.2)
 main()
