@@ -1,19 +1,18 @@
 #!/usr/bin/env python
-import os
-import pygame
-import sys
-from time import sleep
-import RPi.GPIO as GPIO
-from pygame.locals import *
-import gaona
-os.putenv('SDL_FBDEV', '/dev/fb1')
+def start():
+    import os
+    import pygame
+    import sys
+    from time import sleep
+    import RPi.GPIO as GPIO
+    from pygame.locals import *
+    import gaona
+    os.putenv('SDL_FBDEV', '/dev/fb1')
 
-button_map = {23:(0,85), 24:(100,0)}
-GPIO.setmode(GPIO.BCM)
-for k in button_map.keys():
-    GPIO.setup(k, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-
-def main():
+    button_map = {23:(0,85), 24:(100,0)}
+    GPIO.setmode(GPIO.BCM)
+    for k in button_map.keys():
+        GPIO.setup(k, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     def names():
         DISPLAY.blit(font.render('Gaona\'s Bell', True, BLACK), (25, 15))
         DISPLAY.blit(font.render('Second', True, BLACK), (25, 100))
@@ -81,4 +80,5 @@ def main():
                         quit()
         pygame.display.update()
         sleep(0.2)
-main()
+if __name__ == '__main__':
+    start()
