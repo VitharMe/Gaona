@@ -14,9 +14,9 @@ for k in button_map.keys():
 
 def main():
     def names():
-        DISPLAY.blit(font.render('Gaona\'s Bell', True, RED), (25, 15))
-        DISPLAY.blit(font.render('Second', True, RED), (25, 100))
-        DISPLAY.blit(font.render('Exit', True, RED), (25, 185))
+        DISPLAY.blit(font.render('Gaona\'s Bell', True, BLACK), (25, 15))
+        DISPLAY.blit(font.render('Second', True, BLACK), (25, 100))
+        DISPLAY.blit(font.render('Exit', True, BLACK), (25, 185))
     def draws():
         # First
         pygame.draw.rect(DISPLAY,HGREY,(25,15,200,50))
@@ -31,13 +31,14 @@ def main():
         pygame.draw.rect(DISPLAY, SGREY, select)
     def motion(v):
         select.move_ip(v)
-        pygame.draw.rect(DISPLAY, SGREY, select)        
+        pygame.draw.rect(DISPLAY, SGREY, select)
     pygame.init()
     pygame.mouse.set_visible(False)
     DISPLAY=pygame.display.set_mode((240,240),0,0)
 
     WHITE=(255,255,255)
     BLACK=(0,0,0)
+    ORANGE=(252, 163, 17)
     BLUE=(0,0,255)
     RED=(255,0,0)
     GREY=(220,220,220)
@@ -58,4 +59,3 @@ def main():
         pygame.display.update()
         sleep(0.2)
 main()
-
