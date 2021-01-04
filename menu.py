@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-def start():
+def deploy():
     import os
     import pygame
     import sys
@@ -81,4 +81,4 @@ def start():
         pygame.display.update()
         sleep(0.2)
 if __name__ == '__main__':
-    start()
+    deploy()

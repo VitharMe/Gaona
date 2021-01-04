@@ -25,7 +25,7 @@ def graph():
     while True:
         for (k,v) in button_map.items():
             if GPIO.input(k) == False:
-                menu()
+                menu.deploy()
             # Create some data
             x, y = [], []
             for line in open('last.txt', 'r'):
